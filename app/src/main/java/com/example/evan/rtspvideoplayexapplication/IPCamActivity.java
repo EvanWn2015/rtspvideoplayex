@@ -35,7 +35,9 @@ public class IPCamActivity extends AppCompatActivity implements SurfaceHolder.Ca
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
 
-        rtspUrl = getIntent().getStringExtra("url");
+        rtspUrl = getIntent().getStringExtra("rtspUrl");
+
+        Log.i(TAG, rtspUrl);
 
         handler = new Handler();
         surfaceholder = surfaceView.getHolder();
@@ -48,7 +50,6 @@ public class IPCamActivity extends AppCompatActivity implements SurfaceHolder.Ca
         super.onResume();
         Log.i(TAG, "in onPostResume");
         surfaceholder.addCallback(IPCamActivity.this);
-        show();
     }
 
     @Override
@@ -116,11 +117,6 @@ public class IPCamActivity extends AppCompatActivity implements SurfaceHolder.Ca
     private void hide(){
         progressBar.setVisibility(View.GONE);
         surfaceView.setVisibility(View.VISIBLE);
-    }
-
-    private void show(){
-        progressBar.setVisibility(View.VISIBLE);
-        surfaceView.setVisibility(View.GONE);
     }
 
 }
